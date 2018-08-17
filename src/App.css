@@ -1,0 +1,62 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  padding: 10px 0;
+  color: white;
+  display:flex;
+}
+
+.App-title {
+  font-size: 1.5em;
+  padding:0 10px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.hamburger-menu{
+  padding: 0 0 0 20px;
+  display: inline-block;
+  visibility: hidden;
+  align-self: center;
+  cursor:pointer;
+}
+
+.hamburger-menu:hover{
+  background: lighten(white, 10%);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  transform: scale(1.1);
+  transition: all .2s ease;
+}
+
+.restaurant-list{
+  text-align:center;
+}
+
+@media screen and (max-width: 405px) {
+  .App-title{
+    font-size:1em;
+  }
+  .hamburger-menu div{
+    width:10px !important;
+  }
+  .hamburger-menu{
+    padding-left:10px;
+  }
+}
+
+
+@media screen and (min-width: 405px) and (max-width: 466px) {
+  .App-title{
+    font-size:1.25em;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hamburger-menu{
+    visibility: visible;
+  }
+}
+
