@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import './App.css';
+
+import React, { Component } from 'react';
 import RestaurantList from './RestaurantList';
 import HambugerMenu from 'react-hamburger-menu';
 
@@ -19,11 +20,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className="hamburger-menu">
-            <HambugerMenu isOpen={this.state.open} menuClicked={() => this.handleClick()} color={'white'} height={15} width={20}/>
+            <HambugerMenu isOpen={this.state.open} menuClicked={() => this.handleClick()} color={'white'} height={10} width={20}/>
           </div>
           <h1 className="App-title">Restaurants in Greater Carrollwood</h1>
         </header>
-        <RestaurantList/>
+        <RestaurantList open={this.state.open}/>
       </div>
     );
   }

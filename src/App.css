@@ -31,22 +31,32 @@
   transition: all .2s ease;
 }
 
-.restaurant-list{
-  text-align:center;
+.restaurant-list {
+  position: absolute;
+  background: black;
+  color: white;
+  height: 100%;
+  width: 10em;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.2s;
 }
+.menu-hidden{
+  transform: translate3d(-12em, 0, 0);
+  transition: transform 0.2s;
+}
+
 
 @media screen and (max-width: 405px) {
   .App-title{
     font-size:1em;
   }
   .hamburger-menu div{
-    width:10px !important;
+    width:13px !important;
   }
   .hamburger-menu{
     padding-left:10px;
   }
 }
-
 
 @media screen and (min-width: 405px) and (max-width: 466px) {
   .App-title{
