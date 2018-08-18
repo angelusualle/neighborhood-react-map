@@ -33,18 +33,51 @@
 
 .restaurant-list {
   position: absolute;
-  background: black;
+  background: #494949;
   color: white;
-  height: 100%;
-  width: 10em;
+  height: calc(100% - 48px);
+  width: 30%;
+  max-width: 347px;
+  min-width: 207px;
   transform: translate3d(0, 0, 0);
   transition: transform 0.2s;
 }
+
 .menu-hidden{
-  transform: translate3d(-12em, 0, 0);
-  transition: transform 0.2s;
+  transform: translate3d(-100%, 0, 0);
+  transition: transform 0.5s;
 }
 
+.filter {
+  width: 90%;
+  font-size:1.2em;
+  font-family:sans-serif;
+}
+
+.filter-title{
+  line-height: 2;
+  font-size:1.25em;
+}
+
+.location-list{
+  list-style-type: none;
+  padding: 0;
+  text-align:left;
+  margin-right:1px;
+}
+.location-item{
+  Border: 1px solid grey;
+  padding: 10px;
+  cursor:pointer;
+  text-align: left;
+}
+.location-item:hover{
+  background: lighten(white, 10%);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  Border: 2px solid white;
+  transition: all .2s ease;
+  border-collapse: collapse
+}
 
 @media screen and (max-width: 405px) {
   .App-title{
@@ -56,12 +89,19 @@
   .hamburger-menu{
     padding-left:10px;
   }
+  .restaurant-list {
+    height: calc(100% - 28px);
+  }
 }
 
 @media screen and (min-width: 405px) and (max-width: 466px) {
   .App-title{
     font-size:1.25em;
   }
+  .restaurant-list {
+    height: calc(100% - 33px);
+  }
+
 }
 
 @media screen and (max-width: 650px) {
