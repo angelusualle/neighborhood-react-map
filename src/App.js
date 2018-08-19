@@ -16,18 +16,22 @@ class App extends Component {
       {title: 'Red Lobster', location: {lat: 28.0546268, lng: -82.50309179999999}},
       {title: 'Shells Seafood Restaurant Carrollwood', location: {lat: 27.9427724, lng: -82.50540889999999}},
     ],
-    selectedLocation
+    selectedLocation: null
   }
 
   componentDidMount() {
-
+    //to be done get 3rd party data
   }
+
   handleClick() {
     this.setState({
       open: !this.state.open
     });
   }
 
+  selectRestaurant(l){
+    this.setState({selectedLocation: l});
+  }
   render() {
     return (
       <div className="App">
@@ -44,6 +48,7 @@ class App extends Component {
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
+            selectRestaurant={(l) => this.selectRestaurant(l)}
           />
         </div>
       </div>

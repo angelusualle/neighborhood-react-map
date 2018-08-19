@@ -40,7 +40,7 @@
   min-width: 207px;
   transform: translate3d(0, 0, 0);
   transition: transform 0.2s;
-  overflow:scroll;
+  overflow:auto;
 }
 
 .menu-hidden{

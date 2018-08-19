@@ -18,6 +18,7 @@ import {
         title= {l.title}
         label={{ text:l.title, color:"white", fontWeight:"bold"}}
         key = {i}
+        onClick={(e) => props.selectRestaurant(l)}
       />
     )}
     </GoogleMap>
