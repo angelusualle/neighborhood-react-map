@@ -19,7 +19,6 @@
 .hamburger-menu{
   padding: 0 0 0 20px;
   display: inline-block;
-  visibility: hidden;
   align-self: center;
   cursor:pointer;
 }
@@ -41,6 +40,7 @@
   min-width: 207px;
   transform: translate3d(0, 0, 0);
   transition: transform 0.2s;
+  overflow:scroll;
 }
 
 .menu-hidden{
@@ -79,6 +79,17 @@
   border-collapse: collapse
 }
 
+.map{
+  margin-left:30%;
+  height:calc(100vh - 48px);
+  transition: all 0.2s;
+}
+
+.full-width-map{
+  margin: 0 !important;
+  transition: all 0.5s;
+}
+
 @media screen and (max-width: 405px) {
   .App-title{
     font-size:1em;
@@ -90,7 +101,10 @@
     padding-left:10px;
   }
   .restaurant-list {
-    height: calc(100% - 28px);
+    height: calc(100% - 38px);
+  }
+  .map{
+    height:calc(100vh - 38px);
   }
 }
 
@@ -104,9 +118,14 @@
 
 }
 
-@media screen and (max-width: 650px) {
-  .hamburger-menu{
-    visibility: visible;
+@media screen and (min-width: 1156.66666667px) {
+  .map{
+    margin-left:347px;
   }
 }
 
+@media screen and (max-width: 690px){
+  .map{
+    margin-left: 207px;
+  }
+}

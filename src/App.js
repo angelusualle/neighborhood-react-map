@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react';
 import RestaurantList from './RestaurantList';
 import HambugerMenu from 'react-hamburger-menu';
+import Map from './Map'
 
 class App extends Component {
   state = {
@@ -12,9 +13,10 @@ class App extends Component {
       {title: 'IHOP', location: {lat: 28.0498504, lng: -82.50315739999999}},
       {title: 'Vizcaya Restaurante & Tapas Bar', location: {lat: 28.047907, lng: -82.50384699999999}},
       {title: 'Carrabba\'s Italian Grill', location: {lat: 28.052608, lng: -82.5034678}},
-      {title: 'Bonefish Grill', location: {lat: 28.0694678, lng: -82.50665910000001}},
-      {title: 'Shells Seafood Restaurant Carrollwood', location: {lat: 27.9427724, lng: -82.50540889999999}}
-    ]
+      {title: 'Red Lobster', location: {lat: 28.0546268, lng: -82.50309179999999}},
+      {title: 'Shells Seafood Restaurant Carrollwood', location: {lat: 27.9427724, lng: -82.50540889999999}},
+    ],
+    selectedLocation
   }
 
   componentDidMount() {
@@ -36,6 +38,14 @@ class App extends Component {
           <h1 className="App-title">Restaurants in Greater Carrollwood</h1>
         </header>
         <RestaurantList open={this.state.open} locations={this.state.locations}/>
+        <div className={(this.state.open ? " " : "full-width-map ") +"map"}>
+            <Map locations={this.state.locations}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyClm0mwucTEGueLBQ3ngMj7qsqmfbKefHw&v=3"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `100%` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+          />
+        </div>
       </div>
     );
   }
