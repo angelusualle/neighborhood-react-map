@@ -79,6 +79,14 @@
   border-collapse: collapse
 }
 
+.highlighted{
+  background: lighten(white, 10%);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  Border: 2px solid white;
+  transition: all .2s ease;
+  border-collapse: collapse
+}
+
 .map{
   margin-left:30%;
   height:calc(100vh - 48px);

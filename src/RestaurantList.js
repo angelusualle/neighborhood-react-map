@@ -25,7 +25,7 @@ class RestaurantList extends Component{
             <input type="text" className="filter" formNoValidate={true} onChange={(e) => this.filterChange(e.target.value)}/>
             <ul className="location-list">
             {showingLocations.map((l, i) => 
-                <li className="location-item" key={i}>{l.title}</li>
+                <li className={(this.props.selectedLocation === l ? "highlighted  " : "") +"location-item"} onClick={(e) => this.props.selectRestaurant(l)} key={i}>{l.title}</li>
             )}
             </ul>
         </nav>

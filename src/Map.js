@@ -4,6 +4,7 @@ import {
     withGoogleMap,
     GoogleMap,
     Marker,
+    InfoWindow
   } from "react-google-maps";
   
   const Map = withScriptjs(withGoogleMap(props =>
@@ -16,10 +17,13 @@ import {
       <Marker
         position={{ lat: l.location.lat, lng: l.location.lng }}
         title= {l.title}
-        label={{ text:l.title, color:"white", fontWeight:"bold"}}
         key = {i}
         onClick={(e) => props.selectRestaurant(l)}
-      />
+      >
+            {l === props.selectedLocation && <InfoWindow onCloseClick={props.onToggleOpen}>
+        <span>test</span>
+      </InfoWindow>}
+      </Marker>
     )}
     </GoogleMap>
   ));
