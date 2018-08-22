@@ -18,6 +18,7 @@ import {
         position={{ lat: l.location.lat, lng: l.location.lng }}
         title= {l.title}
         key = {i}
+        animation={(l === props.selectedLocation)? '1': '0'}
         onClick={(e) => props.selectRestaurant(l)}
       >
       {l === props.selectedLocation && <InfoWindow onCloseClick={props.onToggleOpen}>

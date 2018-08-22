@@ -148,7 +148,8 @@
 
 @media screen and (max-width: 690px){
   .info-window{
-    max-width:150px;
+    width:100px;
+    font-size: 11px !important;
   }
 
   h1 {

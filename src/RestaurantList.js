@@ -22,10 +22,10 @@ class RestaurantList extends Component{
 
         return <nav className={(this.props.open ? " " : "menu-hidden ") +"restaurant-list"}>
             <span className="filter-title">Location Filter</span>
-            <input type="text" className="filter" formNoValidate={true} onChange={(e) => this.filterChange(e.target.value)}/>
+            <input type="text" className="filter" tabIndex={this.props.open? "1": "-1"} aria-hidden={this.props.open? "false": "true"} formNoValidate={true} onChange={(e) => this.filterChange(e.target.value)}/>
             <ul className="location-list">
             {showingLocations.map((l, i) => 
-                <li className={(this.props.selectedLocation === l ? "highlighted  " : "") +"location-item"} onClick={(e) => this.props.selectRestaurant(l)} key={i}>{l.title}</li>
+                <li className={(this.props.selectedLocation === l ? "highlighted  " : "") +"location-item"}  tabIndex={this.props.open? `${i + 2                    }`: "-1"}onClick={(e) => this.props.selectRestaurant(l)} key={i}>{l.title}</li>
             )}
             </ul>
         </nav>

@@ -1,7 +1,10 @@
 import './App.css';
+import './animate.css'
 
 import React, { Component } from 'react';
 import RestaurantList from './RestaurantList';
+import ToastrContainer from 'react-toastr-basic'
+import {ToastDanger} from 'react-toastr-basic';
 import HambugerMenu from 'react-hamburger-menu';
 import Map from './Map'
 import * as YelpAPI from './YelpAPI'
@@ -22,7 +25,12 @@ class App extends Component {
   componentDidMount() {
     this.setState({
     locations: this.state.locations.map(l => {
-      YelpAPI.get(l.yelpId).then(data => l.yelpData = data)
+      YelpAPI.get(l.yelpId).then(data => {
+        if (data.error){
+          var error = new Error('err');
+          throw error;
+        }
+        l.yelpData = data}).catch(res => ToastDanger('An error has occurred getting Yelp Data for ' + l.title));
       return l;
     })})
   }
@@ -42,15 +50,17 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App" role="main">
         <header className="App-header">
-          <div className="hamburger-menu">
+          <div className="hamburger-menu" role="button">
             <HambugerMenu isOpen={this.state.open} menuClicked={() => this.handleClick()} color={'white'} height={10} width={20}/>
           </div>
           <h1 className="App-title">Restaurants in Greater Carrollwood</h1>
         </header>
+        <div role="search">
         <RestaurantList open={this.state.open} locations={this.state.locations} selectedLocation={this.state.selectedLocation} selectRestaurant={(l) => this.selectRestaurant(l)}/>
-        <div className={(this.state.open ? " " : "full-width-map ") +"map"}>
+        </div>
+        <div className={(this.state.open ? " " : "full-width-map ") +"map"} role="application">
             <Map locations={this.state.locations}
             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyClm0mwucTEGueLBQ3ngMj7qsqmfbKefHw&v=3"
             loadingElement={<div style={{ height: `100%` }} />}
@@ -61,6 +71,7 @@ class App extends Component {
             onToggleOpen = {() => this.unselectRestaurant()}
           />
         </div>
+        <ToastrContainer />
       </div>
     );
   }
