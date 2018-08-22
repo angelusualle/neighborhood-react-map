@@ -4,22 +4,27 @@ import React, { Component } from 'react';
 import RestaurantList from './RestaurantList';
 import HambugerMenu from 'react-hamburger-menu';
 import Map from './Map'
+import * as YelpAPI from './YelpAPI'
 
 class App extends Component {
   state = {
     open: true,
     locations: [
-      {title: 'Holy Hog BBQ', location: {lat: 28.0522737, lng: -82.5031171}},
-      {title: 'IHOP', location: {lat: 28.0498504, lng: -82.50315739999999}},
-      {title: 'Vizcaya Restaurante & Tapas Bar', location: {lat: 28.047907, lng: -82.50384699999999}},
-      {title: 'Carrabba\'s Italian Grill', location: {lat: 28.052608, lng: -82.5034678}},
-      {title: 'Red Lobster', location: {lat: 28.0546268, lng: -82.50309179999999}}
+      {title: 'Holy Hog BBQ', location: {lat: 28.0522737, lng: -82.5031171}, yelpId : 'OUH5jOBEjExETYr1v-zdXQ'},
+      {title: 'IHOP', location: {lat: 28.0498504, lng: -82.50315739999999}, yelpId : 'qs6H_gmYAre_F0N79GkutQ'},
+      {title: 'Vizcaya Restaurante & Tapas Bar', location: {lat: 28.047907, lng: -82.50384699999999}, yelpId : 'PN5XfZbqf1SI1mZBYSJzVA'},
+      {title: 'Carrabba\'s Italian Grill', location: {lat: 28.052608, lng: -82.5034678}, yelpId : '_WXisiele6N-scYh2m8Gmw'},
+      {title: 'Red Lobster', location: {lat: 28.0546268, lng: -82.50309179999999}, yelpId:'NU1rYG90VUKNvFBMWW8a7Q'}
     ],
     selectedLocation: null
   }
 
   componentDidMount() {
-    //to be done get 3rd party data
+    this.setState({
+    locations: this.state.locations.map(l => {
+      YelpAPI.get(l.yelpId).then(data => l.yelpData = data)
+      return l;
+    })})
   }
 
   handleClick() {

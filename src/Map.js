@@ -20,8 +20,19 @@ import {
         key = {i}
         onClick={(e) => props.selectRestaurant(l)}
       >
-            {l === props.selectedLocation && <InfoWindow onCloseClick={props.onToggleOpen}>
-        <span>test</span>
+      {l === props.selectedLocation && <InfoWindow onCloseClick={props.onToggleOpen}>
+
+      {l.yelpData ?  <div className="info-window">
+          <h1>{l.title}</h1>
+          <img src={l.yelpData.image_url} alt="Restaurant" className="thumbnail"/>
+          <ul className="categories">
+            {l.yelpData.categories.map((c, i) => <li key={i}>{c.title}</li>)}
+          </ul>
+          <h3>Phone:</h3>
+          <span>{l.yelpData.display_phone}</span>
+        </div>
+        : <span>Loading...</span>
+      }
       </InfoWindow>}
       </Marker>
     )}
