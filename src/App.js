@@ -22,6 +22,7 @@ class App extends Component {
     selectedLocation: null
   }
 
+  //Gets Yelp API data
   componentDidMount() {
     this.setState({
     locations: this.state.locations.map(l => {
@@ -35,12 +36,14 @@ class App extends Component {
     })})
   }
 
+  //Handles changing state of side pane showing or not
   handleClick() {
     this.setState({
       open: !this.state.open
     });
   }
 
+  //Handles selecting a restaurant by list or 
   selectRestaurant(l){
     this.setState({selectedLocation: l});
   }

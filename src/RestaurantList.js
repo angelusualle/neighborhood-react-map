@@ -5,7 +5,7 @@ class RestaurantList extends Component{
     state= {
         searchTerm: ''
     }
-
+    //Changes seach term
     filterChange(searchTerm){
         this.setState({searchTerm})
     }
